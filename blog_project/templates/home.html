@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Trang chủ{% endblock title %}
+{% block content %}
+    {% for p in posts %}
+        <h2><a href="{% url 'detail' p.pk %}">{{ p.title }}</a></h2>
+    {%endfor%}
+{% endblock content%}
