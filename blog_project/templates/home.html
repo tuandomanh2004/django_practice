@@ -4,4 +4,5 @@
     {% for p in posts %}
         <h2><a href="{% url 'detail' p.pk %}">{{ p.title }}</a></h2>
     {%endfor%}
+    <h3><a href="{% url 'create' %}">Thêm blog</a></h3>
 {% endblock content%}

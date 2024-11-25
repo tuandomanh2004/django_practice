@@ -4,4 +4,6 @@
     <h3>Tác giả : {{ post.author }} </h3>
     <h3>Nội dung :</h3>
     <p>{{ post.content }}</p>
+    <h3><a href="{% url 'edit' post.pk %}">Sửa blog</a></h3>
+    <h3><a href="{% url 'delete' post.pk %}">Xóa blog</a></h3>
 {% endblock content %}
