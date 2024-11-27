@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Base{%endblock title%}</title>
+    <title>{% block title %}Base{%endblock%}</title>
 </head>
+
 <body>
     <header>
         <h1><a href="{% url 'home' %}">BLOG APP TEST</a></h1>
+        {% block auth %}
+        {% if user.is_authenticated %}
+        <p>Hello , {{ user.username }} !!! </p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Log out">
+        </form>
+        {% else %}
+        <p>Hello , stranger !!! </p>
+        <a href="{% url 'login' %}"><button>Login</button></a>
+        <a href="{% url 'signup' %}"><button>Sign up</button></a>
+        {% endif %}
+        {%endblock%}
     </header>
     <main>
         {% block content%}
-        {% endblock content%}
+
+        {% endblock %}
     </main>
 </body>
+
 </html>
